@@ -5,8 +5,9 @@
   "packageRules": [
     {
       "enabled": false,
-      "matchPackageNames": ["*"]
-    },
+      "matchPackageNames": ["*"],
+      "description": "Disable all non-security updates"
+    }
   ],
 
   "vulnerabilityAlerts": {
@@ -28,7 +29,6 @@
   "semanticCommitScope": "deps",
 
   "dependencyDashboard": true,
-  "dependencyDashboardApproval": true,
   "dependencyDashboardTitle": "🛡️ Security Dependency Dashboard",
 
   "assignees": ["@security-team", "@devops-lead"],
@@ -37,5 +37,5 @@
   "stabilityDays": 2,
   "prHourlyLimit": 10,
   "prConcurrentLimit": 5,
-  "rebaseWhen": "behind-base-branch"
+  "rebaseWhen": "conflicted"
 }
