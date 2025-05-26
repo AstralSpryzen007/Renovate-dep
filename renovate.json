@@ -68,7 +68,6 @@
 
   "assignees": ["@security-team", "@devops-lead"],
   "reviewers": ["@security-team"],
-  "branchNamePrefix": "renovate/security/",
 
   "stabilityDays": 2,
   "prHourlyLimit": 10,
