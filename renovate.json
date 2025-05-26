@@ -1,0 +1,77 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+
+  "packageRules": [
+    {
+      "enabled": false,
+      "matchPackageNames": ["*"]
+    },
+    {
+      "matchUpdateTypes": ["major", "minor", "patch"],
+      "matchDepTypes": ["dependencies", "devDependencies"],
+      "matchSourceUrls": ["https://github.com/*"],
+      "labels": [
+        "security",
+        "dependencies",
+        "renovate",
+        "automated",
+        "vulnerability",
+        "patch-management"
+      ],
+      "commitMessagePrefix": "fix(deps):",
+      "commitMessageAction": "security update",
+      "addLabels": [
+        "security",
+        "vulnerability",
+        "automated"
+      ],
+      "prTitle": "fix(deps): update {{depName}} to {{newVersion}} [security]",
+      "prBodyNotes": [
+        "### :shield: Security Patch",
+        "- **Dependency**: `{{depName}}`",
+        "- **Current Version**: `{{currentVersion}}`",
+        "- **Patched Version**: `{{newVersion}}`",
+        "- **Source**: [GitHub](https://github.com/{{depName}})",
+        "",
+        "This update addresses a known vulnerability identified by Renovate via GitHub or OSV.",
+        "",
+        "> Ensure you test thoroughly before merging.",
+        "",
+        "---",
+        "_Automated update by Renovate Bot_"
+      ]
+    }
+  ],
+
+  "vulnerabilityAlerts": {
+    "enabled": true
+  },
+  "osvVulnerabilityAlerts": true,
+
+  "lockFileMaintenance": {
+    "enabled": true,
+    "labels": ["security", "transitive-fix"],
+    "schedule": ["at any time"]
+  },
+
+  "commitMessagePrefix": "fix(deps):",
+  "commitMessageAction": "security update",
+
+  "semanticCommits": true,
+  "semanticCommitType": "fix",
+  "semanticCommitScope": "deps",
+
+  "dependencyDashboard": true,
+  "dependencyDashboardApproval": true,
+  "dependencyDashboardTitle": "🛡️ Security Dependency Dashboard",
+
+  "assignees": ["@security-team", "@devops-lead"],
+  "reviewers": ["@security-team"],
+  "branchNamePrefix": "renovate/security/",
+
+  "stabilityDays": 2,
+  "prHourlyLimit": 10,
+  "prConcurrentLimit": 5,
+  "rebaseWhen": "behind-base-branch"
+}
